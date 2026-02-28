@@ -1,0 +1,686 @@
+{%- comment -%}
+  BG Media Hero | PROPS — https://getprops.co
+{%- endcomment -%}
+
+{% schema %}
+{
+  "name": "BG Media Hero",
+  "tag": "section",
+  "class": "props-bg-media-hero",
+  "disabled_on": {
+    "groups": ["header", "custom.popups"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Medium length hero headline goes here"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_size_desktop",
+      "min": 8,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Size",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "min": 20,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Size (Mobile)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "body_size_desktop",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Description Size",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "body_size_mobile",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Description Size (Mobile)",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "section_height_desktop",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "vh",
+      "label": "Section Height",
+      "default": 90
+    },
+    {
+      "type": "range",
+      "id": "section_height_mobile",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "vh",
+      "label": "Section Height (Mobile)",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "content_width_desktop",
+      "min": 30,
+      "max": 100,
+      "step": 2,
+      "unit": "%",
+      "label": "Content Width",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "content_width_mobile",
+      "min": 80,
+      "max": 100,
+      "step": 2,
+      "unit": "%",
+      "label": "Content Width (Mobile)",
+      "default": 92
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "vertical_alignment",
+      "label": "Vertical Alignment",
+      "options": [
+        { "value": "center", "label": "Center" },
+        { "value": "flex-end", "label": "Bottom" }
+      ],
+      "default": "flex-end"
+    },
+    {
+      "type": "header",
+      "content": "Button Style"
+    },
+    {
+      "type": "range",
+      "id": "button_radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Button Border Radius",
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_vertical_desktop",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Vertical Padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal_desktop",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Horizontal Padding",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_vertical_mobile",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Vertical Padding (Mobile)",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal_mobile",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Horizontal Padding (Mobile)",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#FFFFFF"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "alt_text",
+          "label": "Alt Text"
+        },
+        {
+          "type": "header",
+          "content": "Overlay"
+        },
+        {
+          "type": "color",
+          "id": "overlay_color",
+          "label": "Overlay Color",
+          "default": "#000000"
+        },
+        {
+          "type": "range",
+          "id": "overlay_opacity",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "unit": "%",
+          "label": "Overlay Opacity",
+          "default": 30
+        }
+      ]
+    },
+    {
+      "type": "video",
+      "name": "Video",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Video"
+        },
+        {
+          "type": "image_picker",
+          "id": "poster",
+          "label": "Poster Image",
+          "info": "Displayed while the video loads or when autoplay is off."
+        },
+        {
+          "type": "checkbox",
+          "id": "autoplay",
+          "label": "Autoplay",
+          "default": true,
+          "info": "Video will be muted when autoplaying."
+        },
+        {
+          "type": "header",
+          "content": "Overlay"
+        },
+        {
+          "type": "color",
+          "id": "overlay_color",
+          "label": "Overlay Color",
+          "default": "#000000"
+        },
+        {
+          "type": "range",
+          "id": "overlay_opacity",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "unit": "%",
+          "label": "Overlay Opacity",
+          "default": 30
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "Button",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Button"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        },
+        {
+          "type": "select",
+          "id": "style",
+          "label": "Style",
+          "options": [
+            { "value": "filled", "label": "Filled" },
+            { "value": "outline", "label": "Outline" }
+          ],
+          "default": "filled"
+        },
+        {
+          "type": "header",
+          "content": "Colors"
+        },
+        {
+          "type": "color",
+          "id": "button_bg",
+          "label": "Button Color",
+          "default": "#FFFFFF"
+        },
+        {
+          "type": "color",
+          "id": "button_text",
+          "label": "Text Color",
+          "default": "#121212",
+          "info": "Applies to filled style. Outline uses Button Color for text."
+        },
+        {
+          "type": "color",
+          "id": "hover_bg",
+          "label": "Hover Color",
+          "default": "#E0E0E0"
+        },
+        {
+          "type": "color",
+          "id": "hover_text",
+          "label": "Hover Text Color",
+          "default": "#121212"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "BG Media Hero",
+      "blocks": [
+        {
+          "type": "image"
+        },
+        {
+          "type": "button",
+          "settings": {
+            "label": "Button", "style": "filled",
+            "button_bg": "#FFFFFF", "button_text": "#121212",
+            "hover_bg": "#E0E0E0", "hover_text": "#121212"
+          }
+        },
+        {
+          "type": "button",
+          "settings": {
+            "label": "Button", "style": "outline",
+            "button_bg": "#FFFFFF", "button_text": "#121212",
+            "hover_bg": "#FFFFFF", "hover_text": "#121212"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+{%- liquid
+  assign media_block = nil
+  assign media_type = 'none'
+  for block in section.blocks
+    if block.type == 'image' or block.type == 'video'
+      assign media_block = block
+      assign media_type = block.type
+      break
+    endif
+  endfor
+-%}
+
+{% style %}
+  .props-bg-media-hero-{{ section.id }} {
+    position: relative;
+    overflow: hidden;
+    color: {{ section.settings.text_color }};
+    min-height: {{ section.settings.section_height_mobile }}vh;
+    display: flex;
+    align-items: {{ section.settings.vertical_alignment }};
+    padding: {{ section.settings.padding_vertical_mobile }}px {{ section.settings.padding_horizontal_mobile }}px;
+
+    --props-heading-size: {{ section.settings.heading_size_mobile }}px;
+    --props-body-size: {{ section.settings.body_size_mobile }}px;
+    --props-content-width: {{ section.settings.content_width_mobile }}%;
+    --props-button-radius: {{ section.settings.button_radius }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .props-bg-media-hero-{{ section.id }} {
+      min-height: {{ section.settings.section_height_desktop }}vh;
+      padding: {{ section.settings.padding_vertical_desktop }}px {{ section.settings.padding_horizontal_desktop }}px;
+
+      --props-heading-size: {{ section.settings.heading_size_desktop }}px;
+      --props-body-size: {{ section.settings.body_size_desktop }}px;
+      --props-content-width: {{ section.settings.content_width_desktop }}%;
+    }
+  }
+
+  .props-bg-media-hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .props-bg-media-hero-bg img,
+  .props-bg-media-hero-bg video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .props-bg-media-hero-placeholder {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: #888;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .props-bg-media-hero-placeholder svg {
+    width: 64px;
+    height: 64px;
+    opacity: 0.5;
+  }
+
+  .props-bg-media-hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .props-bg-media-hero-content {
+    position: relative;
+    z-index: 2;
+    width: var(--props-content-width);
+    max-width: 100%;
+    text-align: {{ section.settings.text_alignment }};
+  }
+
+  .props-bg-media-hero-heading {
+    margin: 0 0 16px 0;
+    font-size: var(--props-heading-size);
+    line-height: 1.15;
+    font-weight: 700;
+  }
+
+  .props-bg-media-hero-description {
+    margin: 0;
+  }
+
+  .props-bg-media-hero-description p {
+    margin: 0 0 16px 0;
+    font-size: var(--props-body-size);
+    line-height: 1.5;
+    opacity: 0.85;
+  }
+
+  .props-bg-media-hero-description p:last-child {
+    margin-bottom: 0;
+  }
+
+  .props-bg-media-hero-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: {{ section.settings.text_alignment }};
+    flex-wrap: wrap;
+    margin-top: 28px;
+  }
+
+  .props-bg-media-hero-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: var(--props-button-radius);
+    cursor: pointer;
+    border: 1.5px solid var(--btn-bg);
+    line-height: 1;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .props-bg-media-hero-btn-filled {
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
+  }
+
+  .props-bg-media-hero-btn-outline {
+    background-color: transparent;
+    color: var(--btn-bg);
+  }
+
+  @media (hover: hover) {
+    .props-bg-media-hero-btn:hover {
+      background-color: var(--btn-hover-bg);
+      color: var(--btn-hover-text);
+      border-color: var(--btn-hover-bg);
+    }
+  }
+
+  .props-bg-media-hero-play-pause {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    z-index: 3;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: background-color 0.2s ease;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+
+  .props-bg-media-hero-play-pause:hover {
+    background: rgba(0, 0, 0, 0.7);
+  }
+
+  .props-bg-media-hero-play-pause svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+  }
+{% endstyle %}
+
+<div class="props-bg-media-hero-{{ section.id }}" data-section-type="props-bg-media-hero" data-section-id="{{ section.id }}">
+
+  {% if media_type == 'image' %}
+    <div class="props-bg-media-hero-bg" {{ media_block.shopify_attributes }}>
+      {% if media_block.settings.image != blank %}
+        {{ media_block.settings.image | image_url: width: 2560 | image_tag:
+          loading: 'eager',
+          class: '',
+          alt: media_block.settings.alt_text | default: media_block.settings.image.alt,
+          widths: '375, 750, 1100, 1500, 2000, 2560',
+          sizes: '100vw'
+        }}
+      {% else %}
+        <div class="props-bg-media-hero-placeholder">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+        </div>
+      {% endif %}
+    </div>
+    {% if media_block.settings.overlay_opacity > 0 %}
+      {%- assign overlay_alpha = media_block.settings.overlay_opacity | divided_by: 100.0 -%}
+      <div class="props-bg-media-hero-overlay" style="background: {{ media_block.settings.overlay_color | color_modify: 'alpha', overlay_alpha }};"></div>
+    {% endif %}
+
+  {% elsif media_type == 'video' %}
+    <div class="props-bg-media-hero-bg" {{ media_block.shopify_attributes }}>
+      {% if media_block.settings.video != blank %}
+        {%- assign poster_url = '' -%}
+        {%- if media_block.settings.poster != blank -%}
+          {%- assign poster_url = media_block.settings.poster | image_url: width: 2560 -%}
+        {%- elsif media_block.settings.video.preview_image -%}
+          {%- assign poster_url = media_block.settings.video.preview_image | image_url: width: 2560 -%}
+        {%- endif -%}
+        <video
+          id="props-bg-media-hero-video-{{ section.id }}"
+          class="props-bg-media-hero-video"
+          {% if media_block.settings.autoplay %}autoplay{% endif %}
+          loop
+          muted
+          playsinline
+          {% if poster_url != '' %}poster="{{ poster_url }}"{% endif %}
+        >
+          {%- for source in media_block.settings.video.sources -%}
+            <source src="{{ source.url }}" type="{{ source.mime_type }}">
+          {%- endfor -%}
+        </video>
+      {% else %}
+        <div class="props-bg-media-hero-placeholder">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        </div>
+      {% endif %}
+    </div>
+    {% if media_block.settings.overlay_opacity > 0 %}
+      {%- assign overlay_alpha = media_block.settings.overlay_opacity | divided_by: 100.0 -%}
+      <div class="props-bg-media-hero-overlay" style="background: {{ media_block.settings.overlay_color | color_modify: 'alpha', overlay_alpha }};"></div>
+    {% endif %}
+
+  {% else %}
+    <div class="props-bg-media-hero-placeholder">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+    </div>
+  {% endif %}
+
+  <div class="props-bg-media-hero-content">
+    {% if section.settings.heading != blank %}
+      <h1 class="props-bg-media-hero-heading">{{ section.settings.heading | escape }}</h1>
+    {% endif %}
+    {% if section.settings.description != blank %}
+      <div class="props-bg-media-hero-description rte">{{ section.settings.description }}</div>
+    {% endif %}
+
+    {%- liquid
+      assign has_buttons = false
+      for block in section.blocks
+        if block.type == 'button' and block.settings.label != blank
+          assign has_buttons = true
+          break
+        endif
+      endfor
+    -%}
+
+    {% if has_buttons %}
+      <div class="props-bg-media-hero-buttons">
+        {% for block in section.blocks %}
+          {% if block.type == 'button' and block.settings.label != blank %}
+            <a
+              href="{{ block.settings.link | default: '#' }}"
+              class="props-bg-media-hero-btn props-bg-media-hero-btn-{{ block.settings.style }}"
+              style="--btn-bg: {{ block.settings.button_bg }}; --btn-text: {{ block.settings.button_text }}; --btn-hover-bg: {{ block.settings.hover_bg }}; --btn-hover-text: {{ block.settings.hover_text }};"
+              {{ block.shopify_attributes }}
+            >
+              {{ block.settings.label | escape }}
+            </a>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+
+  {% if media_type == 'video' and media_block.settings.video != blank %}
+    <button
+      type="button"
+      class="props-bg-media-hero-play-pause"
+      aria-label="Pause video"
+      data-playing="{{ media_block.settings.autoplay }}"
+      onclick="(function(btn){var v=btn.closest('[data-section-type=&quot;props-bg-media-hero&quot;]').querySelector('video');if(!v)return;if(v.paused){v.play();btn.setAttribute('aria-label','Pause video');btn.setAttribute('data-playing','true');btn.innerHTML='<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;currentColor&quot;><rect x=&quot;6&quot; y=&quot;4&quot; width=&quot;4&quot; height=&quot;16&quot; rx=&quot;1&quot;/><rect x=&quot;14&quot; y=&quot;4&quot; width=&quot;4&quot; height=&quot;16&quot; rx=&quot;1&quot;/></svg>';}else{v.pause();btn.setAttribute('aria-label','Play video');btn.setAttribute('data-playing','false');btn.innerHTML='<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 24 24&quot; fill=&quot;currentColor&quot;><polygon points=&quot;6 3 20 12 6 21 6 3&quot;/></svg>';}})(this)"
+    >
+      {% if media_block.settings.autoplay %}
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>
+      {% else %}
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+      {% endif %}
+    </button>
+  {% endif %}
+
+</div>
+
+<script>
+  (function() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      var vid = document.getElementById('props-bg-media-hero-video-{{ section.id }}');
+      if (vid) {
+        vid.pause();
+        var btn = vid.closest('[data-section-type="props-bg-media-hero"]').querySelector('.props-bg-media-hero-play-pause');
+        if (btn) {
+          btn.setAttribute('aria-label', 'Play video');
+          btn.setAttribute('data-playing', 'false');
+          btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"/></svg>';
+        }
+      }
+    }
+  })();
+</script>

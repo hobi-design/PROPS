@@ -1,0 +1,572 @@
+{%- comment -%}
+  Ticker | PROPS — https://getprops.co
+{%- endcomment -%}
+
+{% schema %}
+{
+  "name": "Ticker (Infinite Loop)",
+  "tag": "section",
+  "class": "props-ticker",
+  "disabled_on": {
+    "groups": ["header", "custom.popups"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Speed & Direction"
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "label": "Speed",
+      "info": "Scroll velocity in pixels per second. Higher = faster.",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "speed_mobile",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "label": "Speed (Mobile)",
+      "default": 35
+    },
+    {
+      "type": "select",
+      "id": "direction",
+      "label": "Direction",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "checkbox",
+      "id": "reverse_mobile",
+      "label": "Reverse Direction on Mobile",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "pause_on_hover",
+      "label": "Pause on Hover",
+      "info": "Stops the animation when a user's mouse enters the section.",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Interaction"
+    },
+    {
+      "type": "checkbox",
+      "id": "draggable",
+      "label": "Enable Dragging",
+      "info": "Allow manual dragging/swiping on touch and desktop. Cursor changes to a grab icon.",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "item_gap",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Gap between Items",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "item_height",
+      "min": 32,
+      "max": 1024,
+      "step": 16,
+      "unit": "px",
+      "label": "Item Height",
+      "default": 256
+    },
+    {
+      "type": "range",
+      "id": "item_height_mobile",
+      "min": 32,
+      "max": 512,
+      "step": 8,
+      "unit": "px",
+      "label": "Item Height (Mobile)",
+      "default": 128
+    },
+    {
+      "type": "range",
+      "id": "image_radius",
+      "min": 0,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "label": "Image Border Radius",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Text Style"
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "min": 12,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "label": "Text Size",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "text_size_mobile",
+      "min": 10,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Text Size (Mobile)",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "text_weight",
+      "min": 300,
+      "max": 900,
+      "step": 100,
+      "label": "Text Weight",
+      "default": 500
+    },
+    {
+      "type": "select",
+      "id": "text_transform",
+      "label": "Text Transform",
+      "options": [
+        { "value": "none", "label": "None" },
+        { "value": "uppercase", "label": "Uppercase" },
+        { "value": "lowercase", "label": "Lowercase" },
+        { "value": "capitalize", "label": "Capitalize" }
+      ],
+      "default": "none"
+    },
+
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Top Padding (Mobile)",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom Padding (Mobile)",
+      "default": 24
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "transparent"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#121212"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "alt_text",
+          "label": "Alt Text"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Text",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Your text here"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ticker",
+      "blocks": [
+        { "type": "image" },
+        { "type": "image" },
+        { "type": "image" },
+        { "type": "image" },
+        { "type": "image" }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+{% style %}
+  .props-ticker-{{ section.id }} {
+    background-color: {{ section.settings.bg_color }};
+    color: {{ section.settings.text_color }};
+    padding-top: {{ section.settings.padding_top_mobile }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    overflow: hidden;
+    width: 100%;
+
+    --props-item-height: {{ section.settings.item_height_mobile }}px;
+    --props-item-gap: {{ section.settings.item_gap }}px;
+    --props-image-radius: {{ section.settings.image_radius }}px;
+    --props-text-size: {{ section.settings.text_size_mobile }}px;
+    --props-text-weight: {{ section.settings.text_weight }};
+    --props-text-transform: {{ section.settings.text_transform }};
+  }
+
+  @media screen and (min-width: 750px) {
+    .props-ticker-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top_desktop }}px;
+      padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+
+      --props-item-height: {{ section.settings.item_height }}px;
+      --props-text-size: {{ section.settings.text_size }}px;
+    }
+  }
+
+  .props-ticker-track {
+    display: flex;
+    align-items: center;
+    gap: var(--props-item-gap);
+    width: max-content;
+    will-change: transform;
+  }
+
+  {% if section.settings.draggable %}
+    .props-ticker-{{ section.id }} {
+      cursor: grab;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+    .props-ticker-{{ section.id }}.is-dragging {
+      cursor: grabbing;
+    }
+  {% endif %}
+
+  .props-ticker-item {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--props-item-height);
+  }
+
+  .props-ticker-media {
+    height: 100%;
+    display: block;
+    overflow: hidden;
+    border-radius: var(--props-image-radius);
+  }
+
+  .props-ticker-media img,
+  .props-ticker-media svg {
+    height: 100%;
+    width: auto;
+    display: block;
+    object-fit: contain;
+  }
+
+  .props-ticker-text {
+    white-space: nowrap;
+    font-size: var(--props-text-size);
+    font-weight: var(--props-text-weight);
+    text-transform: var(--props-text-transform);
+    line-height: 1;
+    color: inherit;
+  }
+
+  .props-ticker-link {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+  }
+
+
+{% endstyle %}
+
+{%- liquid
+  assign block_count = section.blocks.size
+  assign has_blocks = false
+  if block_count > 0
+    assign has_blocks = true
+  endif
+
+  assign base_direction = section.settings.direction
+-%}
+
+<div
+  class="props-ticker-{{ section.id }}"
+  data-section-type="props-ticker"
+  data-section-id="{{ section.id }}"
+  data-speed="{{ section.settings.speed }}"
+  data-speed-mobile="{{ section.settings.speed_mobile }}"
+  data-direction="{{ base_direction }}"
+  data-reverse-mobile="{{ section.settings.reverse_mobile }}"
+  data-draggable="{{ section.settings.draggable }}"
+  data-pause-on-hover="{{ section.settings.pause_on_hover }}"
+>
+  {% if has_blocks %}
+    <div class="props-ticker-track" aria-label="Scrolling content">
+      {% for copy in (1..2) %}
+        {% for block in section.blocks %}
+          <div class="props-ticker-item" {% if copy == 1 %}{{ block.shopify_attributes }}{% endif %}>
+
+            {% if block.type == 'image' %}
+              {% if block.settings.link != blank %}
+                <a href="{{ block.settings.link }}" class="props-ticker-link" aria-label="{{ block.settings.alt_text | default: 'Ticker image' | escape }}" tabindex="-1">
+              {% endif %}
+
+              <div class="props-ticker-media">
+                {% if block.settings.image != blank %}
+                  {{ block.settings.image | image_url: width: 600 | image_tag:
+                    loading: 'lazy',
+                    class: 'props-ticker-img',
+                    alt: block.settings.alt_text | default: block.settings.image.alt,
+                    widths: '100, 200, 300, 400, 600',
+                    sizes: '200px'
+                  }}
+                {% else %}
+                  <img src="https://static.photos/monochrome/400x200.webp" class="props-ticker-img" loading="lazy" width="400" height="200" alt="Placeholder">
+                {% endif %}
+              </div>
+
+              {% if block.settings.link != blank %}
+                </a>
+              {% endif %}
+
+            {% elsif block.type == 'text' %}
+              {% if block.settings.link != blank %}
+                <a href="{{ block.settings.link }}" class="props-ticker-link" tabindex="-1">
+              {% endif %}
+
+              <span class="props-ticker-text">{{ block.settings.text | escape }}</span>
+
+              {% if block.settings.link != blank %}
+                </a>
+              {% endif %}
+            {% endif %}
+
+          </div>
+        {% endfor %}
+      {% endfor %}
+    </div>
+  {% endif %}
+</div>
+
+{% javascript %}
+(function () {
+  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  var init = function (container) {
+    var id = container.getAttribute('data-section-id');
+    if (!id) return;
+
+    if (container._propsTickerCleanup) container._propsTickerCleanup();
+
+    var track = container.querySelector('.props-ticker-track');
+    if (!track) return;
+
+    var speedDesktop = parseFloat(container.getAttribute('data-speed')) || 50;
+    var speedMobile = parseFloat(container.getAttribute('data-speed-mobile')) || 35;
+    var direction = container.getAttribute('data-direction') || 'left';
+    var reverseMobile = container.getAttribute('data-reverse-mobile') === 'true';
+    var draggable = container.getAttribute('data-draggable') === 'true';
+    var pauseOnHover = container.getAttribute('data-pause-on-hover') === 'true';
+
+    var offset = 0;
+    var rafId = null;
+    var lastTime = 0;
+    var hovering = false;
+    var isDragging = false;
+
+    var getSpeed = function () {
+      return window.innerWidth < 750 ? speedMobile : speedDesktop;
+    };
+
+    var getDirection = function () {
+      if (window.innerWidth < 750 && reverseMobile) {
+        return direction === 'left' ? 'right' : 'left';
+      }
+      return direction;
+    };
+
+    var halfWidth = function () {
+      return track.scrollWidth / 2;
+    };
+
+    var wrapOffset = function () {
+      var hw = halfWidth();
+      if (hw > 0) {
+        offset = offset % hw;
+        if (offset > 0) offset -= hw;
+      }
+    };
+
+    var tick = function (now) {
+      if (reducedMotion.matches || isDragging || hovering) {
+        lastTime = 0;
+        rafId = requestAnimationFrame(tick);
+        return;
+      }
+
+      if (!lastTime) {
+        lastTime = now;
+        rafId = requestAnimationFrame(tick);
+        return;
+      }
+
+      var dt = (now - lastTime) / 1000;
+      lastTime = now;
+      if (dt > 0.1) dt = 0.1;
+
+      var speed = getSpeed();
+      var dir = getDirection();
+
+      if (dir === 'left') {
+        offset -= speed * dt;
+      } else {
+        offset += speed * dt;
+      }
+
+      wrapOffset();
+      track.style.transform = 'translateX(' + offset + 'px)';
+      rafId = requestAnimationFrame(tick);
+    };
+
+    rafId = requestAnimationFrame(tick);
+
+    if (pauseOnHover) {
+      container.addEventListener('mouseenter', function () { hovering = true; });
+      container.addEventListener('mouseleave', function () { hovering = false; lastTime = 0; });
+    }
+
+    if (draggable) {
+      var startX = 0;
+      var dragStartOffset = 0;
+
+      var onStart = function (e) {
+        isDragging = true;
+        container.classList.add('is-dragging');
+        startX = e.touches ? e.touches[0].clientX : e.clientX;
+        dragStartOffset = offset;
+      };
+
+      var onMove = function (e) {
+        if (!isDragging) return;
+        var x = e.touches ? e.touches[0].clientX : e.clientX;
+        offset = dragStartOffset + (x - startX);
+        wrapOffset();
+        track.style.transform = 'translateX(' + offset + 'px)';
+      };
+
+      var onEnd = function () {
+        if (!isDragging) return;
+        isDragging = false;
+        container.classList.remove('is-dragging');
+        lastTime = 0;
+      };
+
+      container.addEventListener('mousedown', onStart);
+      container.addEventListener('mousemove', onMove);
+      container.addEventListener('mouseup', onEnd);
+      container.addEventListener('mouseleave', function () {
+        if (isDragging) onEnd();
+      });
+
+      container.addEventListener('touchstart', onStart, { passive: true });
+      container.addEventListener('touchmove', onMove, { passive: true });
+      container.addEventListener('touchend', onEnd);
+    }
+
+    container._propsTickerCleanup = function () {
+      cancelAnimationFrame(rafId);
+    };
+  };
+
+  document.querySelectorAll('[data-section-type="props-ticker"]').forEach(init);
+
+  document.addEventListener('shopify:section:load', function (e) {
+    var c = e.target.querySelector('[data-section-type="props-ticker"]');
+    if (c) init(c);
+  });
+})();
+{% endjavascript %}

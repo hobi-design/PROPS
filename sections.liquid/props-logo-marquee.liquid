@@ -1,0 +1,779 @@
+{%- comment -%}
+  Logo Marquee | PROPS — https://getprops.co
+{%- endcomment -%}
+
+{% schema %}
+{
+  "name": "Logo Marquee",
+  "tag": "section",
+  "class": "props-logo-marquee",
+  "disabled_on": {
+    "groups": ["header", "custom.popups"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "layout_mode",
+      "label": "Layout Mode",
+      "options": [
+        { "value": "stacked", "label": "Top (Stacked)" },
+        { "value": "inline", "label": "Side (Inline)" }
+      ],
+      "default": "stacked"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Used by the world's leading companies"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Trusted by forward-thinking teams around the globe.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "select",
+      "id": "heading_align_desktop",
+      "label": "Text Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "heading_align_mobile",
+      "label": "Text Alignment (Mobile)",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "heading_size_desktop",
+      "min": 12,
+      "max": 60,
+      "step": 1,
+      "unit": "px",
+      "label": "Heading Size",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "min": 12,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "label": "Heading Size (Mobile)",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "desc_size_desktop",
+      "min": 12,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Description Size",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "desc_size_mobile",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Description Size (Mobile)",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "column_gap_desktop",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Column Gap",
+      "info": "Gap between heading and logos. Bottom gap in Stacked, side gap in Inline.",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "column_gap_mobile",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "label": "Column Gap (Mobile)",
+      "default": 24
+    },
+    {
+      "type": "header",
+      "content": "Marquee Settings"
+    },
+    {
+      "type": "range",
+      "id": "item_gap",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Gap between Logos",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "logo_height_desktop",
+      "min": 24,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "label": "Logo Height",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "logo_height_mobile",
+      "min": 20,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Logo Height (Mobile)",
+      "default": 44
+    },
+    {
+      "type": "header",
+      "content": "Speed & Direction"
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "label": "Speed",
+      "info": "Scroll velocity in pixels per second. Higher = faster.",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "speed_mobile",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "label": "Speed (Mobile)",
+      "default": 35
+    },
+    {
+      "type": "select",
+      "id": "direction",
+      "label": "Direction",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "checkbox",
+      "id": "reverse_mobile",
+      "label": "Reverse Direction on Mobile",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "pause_on_hover",
+      "label": "Pause on Hover",
+      "info": "Stops the animation when a user's mouse enters the logos area.",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Interaction"
+    },
+    {
+      "type": "checkbox",
+      "id": "draggable",
+      "label": "Enable Dragging",
+      "info": "Allow manual dragging/swiping on touch and desktop.",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Logo Text"
+    },
+    {
+      "type": "color",
+      "id": "logo_text_color",
+      "label": "Logo Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "logo_text_size",
+      "min": 8,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Logo Text Size",
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_vertical_desktop",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Vertical Padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal_desktop",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Horizontal Padding",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_vertical_mobile",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Vertical Padding (Mobile)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal_mobile",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Horizontal Padding (Mobile)",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "transparent"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#121212"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_grayscale",
+      "label": "Enable Grayscale Filter",
+      "info": "Applies a grayscale filter. Logos return to full color on hover (desktop).",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "alt_text",
+          "label": "Alt Text"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        },
+        {
+          "type": "text",
+          "id": "logo_text",
+          "label": "Logo Text",
+          "info": "Optional text displayed below the logo."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Logo Marquee",
+      "blocks": [
+        { "type": "logo" },
+        { "type": "logo" },
+        { "type": "logo" },
+        { "type": "logo" },
+        { "type": "logo" },
+        { "type": "logo" }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+{% style %}
+  .props-logo-marquee-{{ section.id }} {
+    background-color: {{ section.settings.bg_color }};
+    color: {{ section.settings.text_color }};
+    padding-top: {{ section.settings.padding_vertical_mobile }}px;
+    padding-bottom: {{ section.settings.padding_vertical_mobile }}px;
+
+    --props-pd-h-m: {{ section.settings.padding_horizontal_mobile }}px;
+    --props-pd-h-d: {{ section.settings.padding_horizontal_desktop }}px;
+
+    --props-column-gap: {{ section.settings.column_gap_mobile }}px;
+
+    --props-heading-size: {{ section.settings.heading_size_mobile }}px;
+    --props-heading-align: {{ section.settings.heading_align_mobile }};
+
+    --props-body-size: {{ section.settings.desc_size_mobile }}px;
+
+    --props-item-gap: {{ section.settings.item_gap }}px;
+    --props-logo-height: {{ section.settings.logo_height_mobile }}px;
+
+    --props-logo-text-color: {{ section.settings.logo_text_color }};
+    --props-logo-text-size: {{ section.settings.logo_text_size }}px;
+
+    {% if section.settings.enable_grayscale %}
+      --props-filter: grayscale(1);
+      --props-opacity: 0.7;
+    {% else %}
+      --props-filter: none;
+      --props-opacity: 1;
+    {% endif %}
+  }
+
+  @media screen and (min-width: 750px) {
+    .props-logo-marquee-{{ section.id }} {
+      padding-top: {{ section.settings.padding_vertical_desktop }}px;
+      padding-bottom: {{ section.settings.padding_vertical_desktop }}px;
+
+      --props-column-gap: {{ section.settings.column_gap_desktop }}px;
+
+      --props-heading-size: {{ section.settings.heading_size_desktop }}px;
+      --props-heading-align: {{ section.settings.heading_align_desktop }};
+
+      --props-body-size: {{ section.settings.desc_size_desktop }}px;
+
+      --props-logo-height: {{ section.settings.logo_height_desktop }}px;
+    }
+  }
+
+  .props-logo-marquee-container {
+    width: 100%;
+    max-width: var(--page-width, 1200px);
+    margin: 0 auto;
+    padding-left: var(--props-pd-h-m);
+    padding-right: var(--props-pd-h-m);
+    box-sizing: border-box;
+  }
+
+  @media screen and (min-width: 750px) {
+    .props-logo-marquee-container {
+      padding-left: var(--props-pd-h-d);
+      padding-right: var(--props-pd-h-d);
+    }
+  }
+
+  .props-logo-marquee-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: var(--props-column-gap);
+  }
+
+  .props-logo-marquee-header {
+    width: 100%;
+    text-align: var(--props-heading-align);
+  }
+
+  .props-logo-marquee-heading {
+    display: block;
+    font-size: var(--props-heading-size);
+    text-align: var(--props-heading-align);
+    color: inherit;
+    margin: 0 0 12px 0;
+    line-height: 1.2;
+    font-weight: 600;
+  }
+
+  .props-logo-marquee-description {
+    display: block;
+    font-size: var(--props-body-size);
+    text-align: var(--props-heading-align);
+    color: inherit;
+    margin: 0;
+    line-height: 1.5;
+    opacity: 0.8;
+  }
+
+  .props-logo-marquee-description p {
+    margin: 0;
+  }
+
+  .props-logo-marquee-logos {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .props-logo-marquee-track {
+    display: flex;
+    align-items: center;
+    gap: var(--props-item-gap);
+    width: max-content;
+    will-change: transform;
+  }
+
+  {% if section.settings.draggable %}
+    .props-logo-marquee-logos {
+      cursor: grab;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+    .props-logo-marquee-logos.is-dragging {
+      cursor: grabbing;
+    }
+  {% endif %}
+
+  .props-logo-marquee-item {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: var(--props-logo-height);
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .props-logo-marquee-img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: var(--props-filter);
+    opacity: var(--props-opacity);
+    transition: filter 0.3s ease, opacity 0.3s ease;
+  }
+
+  @media (hover: hover) {
+    .props-logo-marquee-item:hover .props-logo-marquee-img {
+      filter: none;
+      opacity: 1;
+    }
+  }
+
+  .props-logo-marquee-text {
+    display: block;
+    text-align: center;
+    font-size: var(--props-logo-text-size);
+    color: var(--props-logo-text-color);
+    margin-top: 8px;
+    line-height: 1.3;
+    font-weight: 400;
+    white-space: nowrap;
+  }
+
+  @media screen and (min-width: 990px) {
+    {% if section.settings.layout_mode == 'inline' %}
+      .props-logo-marquee-wrapper {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .props-logo-marquee-header {
+        width: 35%;
+        flex-shrink: 0;
+      }
+
+      .props-logo-marquee-logos {
+        width: 65%;
+      }
+    {% endif %}
+  }
+
+  @media screen and (max-width: 989px) {
+    .props-logo-marquee-wrapper {
+      flex-direction: column;
+    }
+  }
+{% endstyle %}
+
+<div class="props-logo-marquee-{{ section.id }}" data-section-type="props-logo-marquee" data-section-id="{{ section.id }}" data-speed="{{ section.settings.speed }}" data-speed-mobile="{{ section.settings.speed_mobile }}" data-direction="{{ section.settings.direction }}" data-reverse-mobile="{{ section.settings.reverse_mobile }}" data-draggable="{{ section.settings.draggable }}" data-pause-on-hover="{{ section.settings.pause_on_hover }}">
+  <div class="page-width props-logo-marquee-container">
+    {% if section.blocks.size > 0 or section.settings.heading != blank %}
+      <div class="props-logo-marquee-wrapper">
+
+        {% if section.settings.heading != blank or section.settings.description != blank %}
+          <div class="props-logo-marquee-header">
+            {% if section.settings.heading != blank %}
+              <h2 class="props-logo-marquee-heading">{{ section.settings.heading | escape }}</h2>
+            {% endif %}
+            {% if section.settings.description != blank %}
+              <div class="props-logo-marquee-description rte">{{ section.settings.description }}</div>
+            {% endif %}
+          </div>
+        {% endif %}
+
+        <div class="props-logo-marquee-logos">
+          <div class="props-logo-marquee-track" aria-label="Scrolling logos">
+            {% for copy in (1..2) %}
+              {% for block in section.blocks %}
+                {% liquid
+                  assign has_link = false
+                  if block.settings.link != blank
+                    assign has_link = true
+                  endif
+
+                  assign placeholder_index = forloop.index | modulo: 6
+                %}
+
+                {% if has_link %}
+                  <a href="{{ block.settings.link }}" class="props-logo-marquee-item" {% if copy == 1 %}{{ block.shopify_attributes }}{% endif %} tabindex="-1">
+                {% else %}
+                  <div class="props-logo-marquee-item" {% if copy == 1 %}{{ block.shopify_attributes }}{% endif %}>
+                {% endif %}
+
+                  {% if block.settings.image != blank %}
+                    {{ block.settings.image | image_url: width: 600 | image_tag:
+                      loading: 'lazy',
+                      class: 'props-logo-marquee-img',
+                      alt: block.settings.alt_text | default: block.settings.image.alt,
+                      widths: '165, 360, 535, 750',
+                      sizes: '(min-width: 990px) 15vw, (min-width: 750px) 25vw, 50vw'
+                    }}
+                  {% else %}
+                    <svg class="props-logo-marquee-img" width="120" height="40" viewBox="0 0 120 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="max-height: 40px;">
+                      {% case placeholder_index %}
+                        {% when 1 %}
+                          <path d="M20 20L10 0H30L20 20ZM20 20L30 40H10L20 20Z" fill="currentColor"/>
+                          <rect x="40" y="12" width="60" height="16" rx="2" fill="currentColor"/>
+                        {% when 2 %}
+                          <circle cx="20" cy="20" r="15" fill="currentColor"/>
+                          <rect x="45" y="15" width="55" height="10" rx="2" fill="currentColor"/>
+                        {% when 3 %}
+                          <rect x="5" y="5" width="30" height="30" rx="4" fill="currentColor"/>
+                          <path d="M50 15H100V25H50V15Z" fill="currentColor"/>
+                        {% when 4 %}
+                           <path d="M15 35V5L35 20L15 35Z" fill="currentColor"/>
+                           <rect x="45" y="12" width="50" height="16" rx="2" fill="currentColor"/>
+                        {% when 5 %}
+                           <path d="M20 5L35 35H5L20 5Z" fill="currentColor"/>
+                           <circle cx="55" cy="20" r="5" fill="currentColor"/>
+                           <rect x="70" y="15" width="40" height="10" rx="2" fill="currentColor"/>
+                        {% else %}
+                           <rect x="5" y="10" width="20" height="20" rx="10" fill="currentColor"/>
+                           <rect x="30" y="10" width="20" height="20" rx="0" fill="currentColor"/>
+                           <rect x="60" y="15" width="50" height="10" rx="2" fill="currentColor"/>
+                      {% endcase %}
+                    </svg>
+                  {% endif %}
+
+                  {% if block.settings.logo_text != blank %}
+                    <span class="props-logo-marquee-text">{{ block.settings.logo_text | escape }}</span>
+                  {% endif %}
+
+                {% if has_link %}
+                  </a>
+                {% else %}
+                  </div>
+                {% endif %}
+              {% endfor %}
+            {% endfor %}
+          </div>
+        </div>
+
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% javascript %}
+(function () {
+  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  var init = function (container) {
+    var id = container.getAttribute('data-section-id');
+    if (!id) return;
+
+    if (container._propsMarqueeCleanup) container._propsMarqueeCleanup();
+
+    var logosWrapper = container.querySelector('.props-logo-marquee-logos');
+    var track = container.querySelector('.props-logo-marquee-track');
+    if (!track) return;
+
+    var speedDesktop = parseFloat(container.getAttribute('data-speed')) || 50;
+    var speedMobile = parseFloat(container.getAttribute('data-speed-mobile')) || 35;
+    var direction = container.getAttribute('data-direction') || 'left';
+    var reverseMobile = container.getAttribute('data-reverse-mobile') === 'true';
+    var draggable = container.getAttribute('data-draggable') === 'true';
+    var pauseOnHover = container.getAttribute('data-pause-on-hover') === 'true';
+
+    var offset = 0;
+    var rafId = null;
+    var lastTime = 0;
+    var hovering = false;
+    var isDragging = false;
+
+    var getSpeed = function () {
+      return window.innerWidth < 750 ? speedMobile : speedDesktop;
+    };
+
+    var getDirection = function () {
+      if (window.innerWidth < 750 && reverseMobile) {
+        return direction === 'left' ? 'right' : 'left';
+      }
+      return direction;
+    };
+
+    var halfWidth = function () {
+      return track.scrollWidth / 2;
+    };
+
+    var wrapOffset = function () {
+      var hw = halfWidth();
+      if (hw > 0) {
+        offset = offset % hw;
+        if (offset > 0) offset -= hw;
+      }
+    };
+
+    var tick = function (now) {
+      if (reducedMotion.matches || isDragging || hovering) {
+        lastTime = 0;
+        rafId = requestAnimationFrame(tick);
+        return;
+      }
+
+      if (!lastTime) {
+        lastTime = now;
+        rafId = requestAnimationFrame(tick);
+        return;
+      }
+
+      var dt = (now - lastTime) / 1000;
+      lastTime = now;
+      if (dt > 0.1) dt = 0.1;
+
+      var speed = getSpeed();
+      var dir = getDirection();
+
+      if (dir === 'left') {
+        offset -= speed * dt;
+      } else {
+        offset += speed * dt;
+      }
+
+      wrapOffset();
+      track.style.transform = 'translateX(' + offset + 'px)';
+      rafId = requestAnimationFrame(tick);
+    };
+
+    rafId = requestAnimationFrame(tick);
+
+    var hoverTarget = logosWrapper || container;
+
+    if (pauseOnHover) {
+      hoverTarget.addEventListener('mouseenter', function () { hovering = true; });
+      hoverTarget.addEventListener('mouseleave', function () { hovering = false; lastTime = 0; });
+    }
+
+    if (draggable && hoverTarget) {
+      var startX = 0;
+      var dragStartOffset = 0;
+
+      var onStart = function (e) {
+        isDragging = true;
+        hoverTarget.classList.add('is-dragging');
+        startX = e.touches ? e.touches[0].clientX : e.clientX;
+        dragStartOffset = offset;
+      };
+
+      var onMove = function (e) {
+        if (!isDragging) return;
+        var x = e.touches ? e.touches[0].clientX : e.clientX;
+        offset = dragStartOffset + (x - startX);
+        wrapOffset();
+        track.style.transform = 'translateX(' + offset + 'px)';
+      };
+
+      var onEnd = function () {
+        if (!isDragging) return;
+        isDragging = false;
+        hoverTarget.classList.remove('is-dragging');
+        lastTime = 0;
+      };
+
+      hoverTarget.addEventListener('mousedown', onStart);
+      hoverTarget.addEventListener('mousemove', onMove);
+      hoverTarget.addEventListener('mouseup', onEnd);
+      hoverTarget.addEventListener('mouseleave', function () {
+        if (isDragging) onEnd();
+      });
+
+      hoverTarget.addEventListener('touchstart', onStart, { passive: true });
+      hoverTarget.addEventListener('touchmove', onMove, { passive: true });
+      hoverTarget.addEventListener('touchend', onEnd);
+    }
+
+    container._propsMarqueeCleanup = function () {
+      cancelAnimationFrame(rafId);
+    };
+  };
+
+  document.querySelectorAll('[data-section-type="props-logo-marquee"]').forEach(init);
+
+  document.addEventListener('shopify:section:load', function (e) {
+    var c = e.target.querySelector('[data-section-type="props-logo-marquee"]');
+    if (c) init(c);
+  });
+})();
+{% endjavascript %}

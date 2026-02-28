@@ -1,0 +1,131 @@
+{% comment %}
+  PROPS Page Chrome — Internal Utility Section
+  Injects page-level CSS for prominent section dividers with
+  labeled separators. Place once per template (near the top).
+
+  This section renders NO visible HTML of its own — it only
+  outputs a <style> block that targets all subsequent
+  .shopify-section elements on the page.
+{% endcomment %}
+
+{%- liquid
+  assign divider_thickness = section.settings.divider_thickness | default: 2
+  assign divider_color     = section.settings.divider_color | default: '#e0e0e0'
+  assign label_color       = section.settings.label_color | default: '#999999'
+  assign label_bg          = section.settings.label_bg | default: '#ffffff'
+  assign section_gap       = section.settings.section_gap | default: 0
+-%}
+
+<style>
+  /* ── Page Chrome: Section Dividers ──────────────────────── */
+
+  /*
+   * Every .shopify-section after the page-chrome section gets
+   * a prominent top border with a centered label showing the
+   * section's registered name via a data-* attribute.
+   *
+   * Excludes the first three utility sections (header, TOC,
+   * page-chrome) which are grouped at the top.
+   */
+
+  /* Divider line between every section (except utilities) */
+  #shopify-section-{{ section.id }} ~ .shopify-section + .shopify-section {
+    position: relative;
+    margin-top: {{ section_gap }}px;
+  }
+
+  #shopify-section-{{ section.id }} ~ .shopify-section + .shopify-section::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: {{ divider_thickness }}px;
+    background: {{ divider_color }};
+    margin: 0 auto;
+  }
+
+  /* Labeled divider: shows section name above the divider line */
+  #shopify-section-{{ section.id }} ~ .shopify-section + .shopify-section::after {
+    content: attr(id);
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
+    padding: 6px 20px;
+    font-family: ui-monospace, 'SF Mono', 'Cascadia Mono', 'Segoe UI Mono', Menlo, Monaco, Consolas, monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: {{ label_color }};
+    background: {{ label_bg }};
+    border: {{ divider_thickness }}px solid {{ divider_color }};
+    border-radius: 100px;
+    position: relative;
+    top: -{{ divider_thickness }}px;
+    margin-top: -10px;
+    margin-bottom: 12px;
+    z-index: 1;
+  }
+
+  /* Hide dividers on the very first content section (right after chrome) */
+  #shopify-section-{{ section.id }} + .shopify-section::before,
+  #shopify-section-{{ section.id }} + .shopify-section::after {
+    display: none !important;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Page Chrome",
+  "tag": "section",
+  "class": "props-page-chrome",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Dividers"
+    },
+    {
+      "type": "range",
+      "id": "divider_thickness",
+      "label": "Divider thickness",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 2,
+      "unit": "px"
+    },
+    {
+      "type": "color",
+      "id": "divider_color",
+      "label": "Divider color",
+      "default": "#e0e0e0"
+    },
+    {
+      "type": "color",
+      "id": "label_color",
+      "label": "Label text color",
+      "default": "#999999"
+    },
+    {
+      "type": "color",
+      "id": "label_bg",
+      "label": "Label background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "section_gap",
+      "label": "Gap between sections",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "default": 0,
+      "unit": "px"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Page Chrome"
+    }
+  ]
+}
+{% endschema %}

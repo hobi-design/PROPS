@@ -1,0 +1,888 @@
+{%- comment -%}
+  Looping Testimonials | PROPS — https://getprops.co
+{%- endcomment -%}
+
+{% schema %}
+{
+  "name": "Looping Testimonials",
+  "tag": "section",
+  "class": "props-looping-testimonials",
+  "disabled_on": {
+    "groups": ["header", "custom.popups"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "TESTIMONIALS"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Title",
+      "default": "What our customers say"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Hear from teams who build faster and launch sooner with PROPS.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "select",
+      "id": "heading_align_desktop",
+      "label": "Text Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "heading_align_mobile",
+      "label": "Text Alignment (Mobile)",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size_desktop",
+      "min": 8,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Subtitle Size",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "subtitle_size_mobile",
+      "min": 8,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Subtitle Size (Mobile)",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "heading_size_desktop",
+      "min": 16,
+      "max": 72,
+      "step": 1,
+      "unit": "px",
+      "label": "Title Size",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "min": 14,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "label": "Title Size (Mobile)",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "desc_size_desktop",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Description Size",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "desc_size_mobile",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Description Size (Mobile)",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Card Settings"
+    },
+    {
+      "type": "range",
+      "id": "card_width_desktop",
+      "min": 240,
+      "max": 520,
+      "step": 10,
+      "unit": "px",
+      "label": "Card Width",
+      "default": 340
+    },
+    {
+      "type": "range",
+      "id": "card_width_mobile",
+      "min": 220,
+      "max": 400,
+      "step": 10,
+      "unit": "px",
+      "label": "Card Width (Mobile)",
+      "default": 280
+    },
+    {
+      "type": "range",
+      "id": "card_radius",
+      "min": 0,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "label": "Card Border Radius",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "logo_height",
+      "min": 16,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Logo Image Height",
+      "info": "Controls the height of the logo / image inside each testimonial card.",
+      "default": 28
+    },
+    {
+      "type": "header",
+      "content": "Speed & Direction"
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "label": "Speed",
+      "info": "Scroll velocity in pixels per second. Higher = faster.",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "speed_mobile",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "label": "Speed (Mobile)",
+      "default": 25
+    },
+    {
+      "type": "select",
+      "id": "direction",
+      "label": "Direction",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "checkbox",
+      "id": "reverse_mobile",
+      "label": "Reverse Direction on Mobile",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "pause_on_hover",
+      "label": "Pause on Hover",
+      "info": "Stops the animation when a user's mouse enters the testimonials area.",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Interaction"
+    },
+    {
+      "type": "checkbox",
+      "id": "draggable",
+      "label": "Enable Dragging",
+      "info": "Allow manual dragging/swiping on touch and desktop.",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "card_gap",
+      "min": 8,
+      "max": 48,
+      "step": 4,
+      "unit": "px",
+      "label": "Gap between Cards",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "card_gap_mobile",
+      "min": 8,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "label": "Gap between Cards (Mobile)",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_vertical_desktop",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Vertical Padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal_desktop",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Horizontal Padding",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_vertical_mobile",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Vertical Padding (Mobile)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal_mobile",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Horizontal Padding (Mobile)",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "transparent"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle Color",
+      "default": "#888888"
+    },
+    {
+      "type": "color",
+      "id": "card_bg",
+      "label": "Card Background",
+      "default": "#F9F9F9"
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Card Border Color",
+      "default": "#EEEEEE"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Logo / Image"
+        },
+        {
+          "type": "text",
+          "id": "alt_text",
+          "label": "Logo Alt Text"
+        },
+        {
+          "type": "richtext",
+          "id": "quote",
+          "label": "Quote",
+          "default": "<p>\"PROPS has completely transformed our workflow. The sections are beautifully designed and incredibly easy to customize.\"</p>"
+        },
+        {
+          "type": "image_picker",
+          "id": "author_image",
+          "label": "Author Photo"
+        },
+        {
+          "type": "text",
+          "id": "author_name",
+          "label": "Author Name",
+          "default": "Alex Carter"
+        },
+        {
+          "type": "text",
+          "id": "author_position",
+          "label": "Position / Company",
+          "default": "Product Designer"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Looping Testimonials",
+      "blocks": [
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "<p>\"PROPS has completely transformed our workflow. The sections are beautifully designed and incredibly easy to customize.\"</p>",
+            "author_name": "Alex Carter",
+            "author_position": "Product Designer"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "<p>\"We launched our store in half the time thanks to PROPS. Every section just works out of the box.\"</p>",
+            "author_name": "Samantha Lee",
+            "author_position": "Founder & CEO"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "<p>\"The attention to detail is unmatched. PROPS gave our site a premium feel without the development overhead.\"</p>",
+            "author_name": "Jordan Kim",
+            "author_position": "Frontend Engineer"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "<p>\"Hands down the best Shopify sections we've used. Clean code, beautiful defaults, and endlessly customizable.\"</p>",
+            "author_name": "Daniel White",
+            "author_position": "Head of Design"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "quote": "<p>\"PROPS made it possible for our small team to build a store that looks like it was done by an agency.\"</p>",
+            "author_name": "Maria Gonzalez",
+            "author_position": "Creative Director"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+{% style %}
+  .props-looping-testimonials-{{ section.id }} {
+    background-color: {{ section.settings.bg_color }};
+    color: {{ section.settings.text_color }};
+    padding-top: {{ section.settings.padding_vertical_mobile }}px;
+    padding-bottom: {{ section.settings.padding_vertical_mobile }}px;
+
+    --props-pd-h-m: {{ section.settings.padding_horizontal_mobile }}px;
+    --props-pd-h-d: {{ section.settings.padding_horizontal_desktop }}px;
+
+    --props-subtitle-size: {{ section.settings.subtitle_size_mobile }}px;
+    --props-heading-size: {{ section.settings.heading_size_mobile }}px;
+    --props-heading-align: {{ section.settings.heading_align_mobile }};
+    --props-body-size: {{ section.settings.desc_size_mobile }}px;
+
+    --props-header-gap: 32px;
+    --props-card-gap: {{ section.settings.card_gap_mobile }}px;
+    --props-card-width: {{ section.settings.card_width_mobile }}px;
+    --props-card-radius: {{ section.settings.card_radius }}px;
+    --props-card-bg: {{ section.settings.card_bg }};
+    --props-card-border: {{ section.settings.card_border_color }};
+    --props-logo-height: {{ section.settings.logo_height }}px;
+    --props-subtitle-color: {{ section.settings.subtitle_color }};
+  }
+
+  @media screen and (min-width: 750px) {
+    .props-looping-testimonials-{{ section.id }} {
+      padding-top: {{ section.settings.padding_vertical_desktop }}px;
+      padding-bottom: {{ section.settings.padding_vertical_desktop }}px;
+
+      --props-subtitle-size: {{ section.settings.subtitle_size_desktop }}px;
+      --props-heading-size: {{ section.settings.heading_size_desktop }}px;
+      --props-heading-align: {{ section.settings.heading_align_desktop }};
+      --props-body-size: {{ section.settings.desc_size_desktop }}px;
+
+      --props-header-gap: 48px;
+      --props-card-gap: {{ section.settings.card_gap }}px;
+      --props-card-width: {{ section.settings.card_width_desktop }}px;
+    }
+  }
+
+  .props-looping-testimonials-container {
+    width: 100%;
+    max-width: var(--page-width, 1200px);
+    margin: 0 auto;
+    padding-left: var(--props-pd-h-m);
+    padding-right: var(--props-pd-h-m);
+    box-sizing: border-box;
+  }
+
+  @media screen and (min-width: 750px) {
+    .props-looping-testimonials-container {
+      padding-left: var(--props-pd-h-d);
+      padding-right: var(--props-pd-h-d);
+    }
+  }
+
+  .props-looping-testimonials-header {
+    text-align: var(--props-heading-align);
+    margin-bottom: var(--props-header-gap);
+  }
+
+  .props-looping-testimonials-subtitle {
+    display: block;
+    font-size: var(--props-subtitle-size);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 500;
+    color: var(--props-subtitle-color);
+    margin: 0 0 12px 0;
+    line-height: 1.4;
+  }
+
+  .props-looping-testimonials-heading {
+    display: block;
+    font-size: var(--props-heading-size);
+    font-weight: 600;
+    color: inherit;
+    margin: 0 0 12px 0;
+    line-height: 1.2;
+  }
+
+  .props-looping-testimonials-description {
+    display: block;
+    font-size: var(--props-body-size);
+    color: inherit;
+    margin: 0;
+    line-height: 1.5;
+    opacity: 0.7;
+  }
+
+  .props-looping-testimonials-description p {
+    margin: 0;
+  }
+
+  .props-looping-testimonials-ticker {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .props-looping-testimonials-track {
+    display: flex;
+    align-items: stretch;
+    gap: var(--props-card-gap);
+    width: max-content;
+    will-change: transform;
+  }
+
+  {% if section.settings.draggable %}
+    .props-looping-testimonials-ticker {
+      cursor: grab;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+    .props-looping-testimonials-ticker.is-dragging {
+      cursor: grabbing;
+    }
+  {% endif %}
+
+  .props-looping-testimonials-card {
+    flex-shrink: 0;
+    width: var(--props-card-width);
+    background: var(--props-card-bg);
+    border: 1px solid var(--props-card-border);
+    border-radius: var(--props-card-radius);
+    padding: 28px 24px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .props-looping-testimonials-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex: 1;
+  }
+
+  .props-looping-testimonials-logo-wrap {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .props-looping-testimonials-logo {
+    display: block;
+    height: var(--props-logo-height);
+    width: auto;
+    object-fit: contain;
+  }
+
+  .props-looping-testimonials-placeholder-logo {
+    display: block;
+    height: var(--props-logo-height);
+    width: auto;
+  }
+
+  .props-looping-testimonials-quote {
+    font-size: 14px;
+    line-height: 1.6;
+    color: inherit;
+    opacity: 0.8;
+  }
+
+  .props-looping-testimonials-quote p {
+    margin: 0;
+  }
+
+  .props-looping-testimonials-author {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .props-looping-testimonials-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  .props-looping-testimonials-author-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .props-looping-testimonials-author-name {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: inherit;
+  }
+
+  .props-looping-testimonials-author-position {
+    font-size: 12px;
+    line-height: 1.3;
+    color: inherit;
+    opacity: 0.6;
+  }
+{% endstyle %}
+
+{%- liquid
+  assign block_count = section.blocks.size
+  assign has_blocks = false
+  if block_count > 0
+    assign has_blocks = true
+  endif
+  assign base_direction = section.settings.direction
+  assign has_header = false
+  if section.settings.subtitle != blank or section.settings.heading != blank or section.settings.description != blank
+    assign has_header = true
+  endif
+-%}
+
+<div
+  class="props-looping-testimonials-{{ section.id }}"
+  data-section-type="props-looping-testimonials"
+  data-section-id="{{ section.id }}"
+  data-speed="{{ section.settings.speed }}"
+  data-speed-mobile="{{ section.settings.speed_mobile }}"
+  data-direction="{{ base_direction }}"
+  data-reverse-mobile="{{ section.settings.reverse_mobile }}"
+  data-draggable="{{ section.settings.draggable }}"
+  data-pause-on-hover="{{ section.settings.pause_on_hover }}"
+>
+
+  {% if has_header %}
+    <div class="page-width props-looping-testimonials-container">
+      <div class="props-looping-testimonials-header">
+        {% if section.settings.subtitle != blank %}
+          <span class="props-looping-testimonials-subtitle">{{ section.settings.subtitle | escape }}</span>
+        {% endif %}
+        {% if section.settings.heading != blank %}
+          <h2 class="props-looping-testimonials-heading">{{ section.settings.heading | escape }}</h2>
+        {% endif %}
+        {% if section.settings.description != blank %}
+          <div class="props-looping-testimonials-description rte">{{ section.settings.description }}</div>
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+
+  {% if has_blocks %}
+    <div class="props-looping-testimonials-ticker">
+      <div class="props-looping-testimonials-track" aria-label="Scrolling testimonials">
+        {% for copy in (1..2) %}
+          {% for block in section.blocks %}
+            {%- assign placeholder_index = forloop.index | modulo: 6 -%}
+            <div class="props-looping-testimonials-card" {% if copy == 1 %}{{ block.shopify_attributes }}{% endif %}>
+
+              <div class="props-looping-testimonials-card-body">
+                {% if block.settings.logo != blank %}
+                  <div class="props-looping-testimonials-logo-wrap">
+                    {{ block.settings.logo | image_url: height: 160 | image_tag:
+                      loading: 'lazy',
+                      class: 'props-looping-testimonials-logo',
+                      alt: block.settings.alt_text | default: block.settings.logo.alt,
+                      widths: '80, 120, 160, 240',
+                      sizes: '120px'
+                    }}
+                  </div>
+                {% else %}
+                  <div class="props-looping-testimonials-logo-wrap">
+                    <svg class="props-looping-testimonials-placeholder-logo" width="120" height="40" viewBox="0 0 120 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="max-height: 40px;">
+                      {% case placeholder_index %}
+                        {% when 1 %}
+                          <path d="M20 20L10 0H30L20 20ZM20 20L30 40H10L20 20Z" fill="currentColor"/>
+                          <rect x="40" y="12" width="60" height="16" rx="2" fill="currentColor"/>
+                        {% when 2 %}
+                          <circle cx="20" cy="20" r="15" fill="currentColor"/>
+                          <rect x="45" y="15" width="55" height="10" rx="2" fill="currentColor"/>
+                        {% when 3 %}
+                          <rect x="5" y="5" width="30" height="30" rx="4" fill="currentColor"/>
+                          <path d="M50 15H100V25H50V15Z" fill="currentColor"/>
+                        {% when 4 %}
+                           <path d="M15 35V5L35 20L15 35Z" fill="currentColor"/>
+                           <rect x="45" y="12" width="50" height="16" rx="2" fill="currentColor"/>
+                        {% when 5 %}
+                           <path d="M20 5L35 35H5L20 5Z" fill="currentColor"/>
+                           <circle cx="55" cy="20" r="5" fill="currentColor"/>
+                           <rect x="70" y="15" width="40" height="10" rx="2" fill="currentColor"/>
+                        {% else %}
+                           <rect x="5" y="10" width="20" height="20" rx="10" fill="currentColor"/>
+                           <rect x="30" y="10" width="20" height="20" rx="0" fill="currentColor"/>
+                           <rect x="60" y="15" width="50" height="10" rx="2" fill="currentColor"/>
+                      {% endcase %}
+                    </svg>
+                  </div>
+                {% endif %}
+
+                {% if block.settings.quote != blank %}
+                  <div class="props-looping-testimonials-quote rte">{{ block.settings.quote }}</div>
+                {% endif %}
+              </div>
+
+              {% if block.settings.author_name != blank or block.settings.author_position != blank or block.settings.author_image != blank %}
+                <div class="props-looping-testimonials-author">
+                  {% if block.settings.author_image != blank %}
+                    {{ block.settings.author_image | image_url: width: 72 | image_tag:
+                      loading: 'lazy',
+                      class: 'props-looping-testimonials-avatar',
+                      alt: block.settings.author_name | default: 'Author',
+                      widths: '36, 72',
+                      sizes: '36px'
+                    }}
+                  {% endif %}
+                  {% if block.settings.author_name != blank or block.settings.author_position != blank %}
+                    <div class="props-looping-testimonials-author-info">
+                      {% if block.settings.author_name != blank %}
+                        <span class="props-looping-testimonials-author-name">{{ block.settings.author_name | escape }}</span>
+                      {% endif %}
+                      {% if block.settings.author_position != blank %}
+                        <span class="props-looping-testimonials-author-position">{{ block.settings.author_position | escape }}</span>
+                      {% endif %}
+                    </div>
+                  {% endif %}
+                </div>
+              {% endif %}
+
+            </div>
+          {% endfor %}
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+
+</div>
+
+{% javascript %}
+(function () {
+  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  var init = function (container) {
+    var id = container.getAttribute('data-section-id');
+    if (!id) return;
+
+    if (container._propsTickerCleanup) container._propsTickerCleanup();
+
+    var tickerWrapper = container.querySelector('.props-looping-testimonials-ticker');
+    var track = container.querySelector('.props-looping-testimonials-track');
+    if (!track) return;
+
+    var speedDesktop = parseFloat(container.getAttribute('data-speed')) || 30;
+    var speedMobile = parseFloat(container.getAttribute('data-speed-mobile')) || 25;
+    var direction = container.getAttribute('data-direction') || 'left';
+    var reverseMobile = container.getAttribute('data-reverse-mobile') === 'true';
+    var draggable = container.getAttribute('data-draggable') === 'true';
+    var pauseOnHover = container.getAttribute('data-pause-on-hover') === 'true';
+
+    var offset = 0;
+    var rafId = null;
+    var lastTime = 0;
+    var hovering = false;
+    var isDragging = false;
+
+    var getSpeed = function () {
+      return window.innerWidth < 750 ? speedMobile : speedDesktop;
+    };
+
+    var getDirection = function () {
+      if (window.innerWidth < 750 && reverseMobile) {
+        return direction === 'left' ? 'right' : 'left';
+      }
+      return direction;
+    };
+
+    var halfWidth = function () {
+      return track.scrollWidth / 2;
+    };
+
+    var wrapOffset = function () {
+      var hw = halfWidth();
+      if (hw > 0) {
+        offset = offset % hw;
+        if (offset > 0) offset -= hw;
+      }
+    };
+
+    var tick = function (now) {
+      if (reducedMotion.matches || isDragging || hovering) {
+        lastTime = 0;
+        rafId = requestAnimationFrame(tick);
+        return;
+      }
+
+      if (!lastTime) {
+        lastTime = now;
+        rafId = requestAnimationFrame(tick);
+        return;
+      }
+
+      var dt = (now - lastTime) / 1000;
+      lastTime = now;
+      if (dt > 0.1) dt = 0.1;
+
+      var speed = getSpeed();
+      var dir = getDirection();
+
+      if (dir === 'left') {
+        offset -= speed * dt;
+      } else {
+        offset += speed * dt;
+      }
+
+      wrapOffset();
+      track.style.transform = 'translateX(' + offset + 'px)';
+      rafId = requestAnimationFrame(tick);
+    };
+
+    rafId = requestAnimationFrame(tick);
+
+    var hoverTarget = tickerWrapper || container;
+
+    if (pauseOnHover) {
+      hoverTarget.addEventListener('mouseenter', function () { hovering = true; });
+      hoverTarget.addEventListener('mouseleave', function () { hovering = false; lastTime = 0; });
+    }
+
+    if (draggable && hoverTarget) {
+      var startX = 0;
+      var dragStartOffset = 0;
+
+      var onStart = function (e) {
+        isDragging = true;
+        hoverTarget.classList.add('is-dragging');
+        startX = e.touches ? e.touches[0].clientX : e.clientX;
+        dragStartOffset = offset;
+      };
+
+      var onMove = function (e) {
+        if (!isDragging) return;
+        var x = e.touches ? e.touches[0].clientX : e.clientX;
+        offset = dragStartOffset + (x - startX);
+        wrapOffset();
+        track.style.transform = 'translateX(' + offset + 'px)';
+      };
+
+      var onEnd = function () {
+        if (!isDragging) return;
+        isDragging = false;
+        hoverTarget.classList.remove('is-dragging');
+        lastTime = 0;
+      };
+
+      hoverTarget.addEventListener('mousedown', onStart);
+      hoverTarget.addEventListener('mousemove', onMove);
+      hoverTarget.addEventListener('mouseup', onEnd);
+      hoverTarget.addEventListener('mouseleave', function () {
+        if (isDragging) onEnd();
+      });
+
+      hoverTarget.addEventListener('touchstart', onStart, { passive: true });
+      hoverTarget.addEventListener('touchmove', onMove, { passive: true });
+      hoverTarget.addEventListener('touchend', onEnd);
+    }
+
+    container._propsTickerCleanup = function () {
+      cancelAnimationFrame(rafId);
+    };
+  };
+
+  document.querySelectorAll('[data-section-type="props-looping-testimonials"]').forEach(init);
+
+  document.addEventListener('shopify:section:load', function (e) {
+    var c = e.target.querySelector('[data-section-type="props-looping-testimonials"]');
+    if (c) init(c);
+  });
+})();
+{% endjavascript %}

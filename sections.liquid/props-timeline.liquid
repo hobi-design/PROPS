@@ -1,0 +1,752 @@
+{%- comment -%}
+  Timeline | PROPS — https://getprops.co
+{%- endcomment -%}
+
+{% schema %}
+{
+  "name": "Timeline",
+  "tag": "section",
+  "class": "props-timeline",
+  "disabled_on": {
+    "groups": ["header", "custom.popups"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Intro Content"
+    },
+    {
+      "type": "richtext",
+      "id": "tagline",
+      "label": "Tagline",
+      "default": "<p>TIMELINE</p>"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Our Journey"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>A history of our milestones and future goals.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_size_desktop",
+      "min": 24,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Font Size",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "min": 20,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Font Size (Mobile)",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "event_heading_size_desktop",
+      "min": 16,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "label": "Event Heading Size",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "event_heading_size_mobile",
+      "min": 16,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "label": "Event Heading Size (Mobile)",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "body_size_desktop",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Body Text Size",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "body_size_mobile",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Body Text Size (Mobile)",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "gutter_desktop",
+      "min": 20,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Content Gutter (Desktop)",
+      "default": 60
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_vertical_desktop",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Vertical Padding",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal_desktop",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Horizontal Padding",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_vertical_mobile",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Vertical Padding (Mobile)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal_mobile",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Horizontal Padding (Mobile)",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "transparent"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent Color (Line / Dots)",
+      "default": "#121212"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "event",
+      "name": "Event",
+      "settings": [
+        {
+          "type": "text",
+          "id": "date_label",
+          "label": "Date / Label",
+          "default": "2024"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Event Heading",
+          "default": "Milestone Achieved"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description",
+          "default": "<p>Details about this specific timeline event.</p>"
+        },
+        {
+          "type": "text",
+          "id": "link_label",
+          "label": "Link Label"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "Link URL"
+        },
+        {
+          "type": "header",
+          "content": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Event Image"
+        },
+        {
+          "type": "text",
+          "id": "alt_text",
+          "label": "Alt Text"
+        },
+        {
+          "type": "select",
+          "id": "image_size",
+          "label": "Image Size",
+          "options": [
+            { "value": "small", "label": "Small" },
+            { "value": "medium", "label": "Medium" },
+            { "value": "full", "label": "Full Width" }
+          ],
+          "default": "medium"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Timeline",
+      "blocks": [
+        {
+          "type": "event",
+          "settings": {
+            "date_label": "2006",
+            "heading": "Shopify Founded",
+            "description": "<p>Tobias Lütke, Daniel Weinand, and Scott Lake launch Shopify after building their own e-commerce platform for an online snowboard store.</p>",
+            "image_size": "full",
+            "link_label": "Learn more →",
+            "link_url": "https://props.supply"
+          }
+        },
+        {
+          "type": "event",
+          "settings": {
+            "date_label": "2009",
+            "heading": "API & App Store",
+            "description": "<p>Shopify opens its API and launches the Shopify App Store, enabling third-party developers to extend the platform's functionality.</p>"
+          }
+        },
+        {
+          "type": "event",
+          "settings": {
+            "date_label": "2013",
+            "heading": "Shopify Payments",
+            "description": "<p>The launch of Shopify Payments eliminates the need for third-party payment gateways, simplifying the checkout experience for merchants worldwide.</p>"
+          }
+        },
+        {
+          "type": "event",
+          "settings": {
+            "date_label": "2015",
+            "heading": "IPO on NYSE",
+            "description": "<p>Shopify goes public on the New York Stock Exchange under the ticker SHOP, raising over $131 million in its initial public offering.</p>"
+          }
+        },
+        {
+          "type": "event",
+          "settings": {
+            "date_label": "2020",
+            "heading": "Global Commerce Boom",
+            "description": "<p>During the global shift to online shopping, Shopify processes over $5.1 billion in Black Friday / Cyber Monday sales, cementing its role in powering digital commerce.</p>"
+          }
+        },
+        {
+          "type": "event",
+          "settings": {
+            "date_label": "2023",
+            "heading": "Shopify Editions & AI",
+            "description": "<p>Shopify launches Sidekick AI assistant and introduces over 100 new features through its bi-annual Editions release, pushing the platform further into the AI era.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+{% style %}
+  .props-timeline-{{ section.id }} {
+    background-color: {{ section.settings.bg_color }};
+    color: {{ section.settings.text_color }};
+    padding-top: {{ section.settings.padding_vertical_mobile }}px;
+    padding-bottom: {{ section.settings.padding_vertical_mobile }}px;
+
+    --props-pd-h-m: {{ section.settings.padding_horizontal_mobile }}px;
+    --props-pd-h-d: {{ section.settings.padding_horizontal_desktop }}px;
+
+    --props-accent: {{ section.settings.accent_color }};
+
+    --props-gutter: 32px;
+
+    --props-heading-size: {{ section.settings.heading_size_mobile }}px;
+    --props-subheading-size: {{ section.settings.event_heading_size_mobile }}px;
+    --props-body-size: {{ section.settings.body_size_mobile }}px;
+
+    --props-line-width: 2px;
+    --props-dot-size: 10px;
+    --props-dot-offset: 6px;
+    --props-line-pos: calc(var(--props-dot-offset) + var(--props-dot-size) / 2 - var(--props-line-width) / 2);
+  }
+
+  @media screen and (min-width: 750px) {
+    .props-timeline-{{ section.id }} {
+      padding-top: {{ section.settings.padding_vertical_desktop }}px;
+      padding-bottom: {{ section.settings.padding_vertical_desktop }}px;
+      --props-gutter: {{ section.settings.gutter_desktop }}px;
+      --props-heading-size: {{ section.settings.heading_size_desktop }}px;
+      --props-subheading-size: {{ section.settings.event_heading_size_desktop }}px;
+      --props-body-size: {{ section.settings.body_size_desktop }}px;
+      --props-dot-offset: -5px;
+      --props-line-pos: calc(var(--props-dot-offset) + var(--props-dot-size) / 2 - var(--props-line-width) / 2);
+    }
+  }
+
+  .props-timeline-container {
+    width: 100%;
+    max-width: var(--page-width, 1200px);
+    margin: 0 auto;
+    padding-left: var(--props-pd-h-m);
+    padding-right: var(--props-pd-h-m);
+    box-sizing: border-box;
+  }
+
+  @media screen and (min-width: 750px) {
+    .props-timeline-container {
+      padding-left: var(--props-pd-h-d);
+      padding-right: var(--props-pd-h-d);
+    }
+  }
+
+  .props-timeline-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .props-timeline-wrapper {
+      flex-direction: row;
+      gap: 0;
+      align-items: flex-start;
+    }
+  }
+
+  .props-timeline-intro {
+    width: 100%;
+    text-align: left;
+  }
+
+  @media screen and (min-width: 750px) {
+    .props-timeline-intro {
+      width: 50%;
+      padding-right: var(--props-gutter);
+      box-sizing: border-box;
+      position: sticky;
+      top: 40px;
+    }
+  }
+
+  .props-timeline-tagline {
+    margin-bottom: 16px;
+    display: block;
+    font-size: 0.8em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .props-timeline-tagline.is-visible {
+    opacity: 0.7;
+    transform: translateY(0);
+  }
+
+  .props-timeline-tagline p { margin: 0; }
+
+  .props-timeline-heading {
+    margin: 0 0 16px 0;
+    line-height: 1.1;
+    font-weight: bold;
+    font-size: var(--props-heading-size);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.1s, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
+  }
+
+  .props-timeline-heading.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .props-timeline-desc {
+    font-size: var(--props-body-size);
+    line-height: 1.6;
+    max-width: 540px;
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.2s, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+  }
+
+  .props-timeline-desc.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .props-timeline-desc p,
+  .props-timeline-event-desc p { margin: 0; }
+
+  .props-timeline-desc p:not(:last-child),
+  .props-timeline-event-desc p:not(:last-child) { margin-bottom: 0.8em; }
+
+  .props-timeline-list {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  @media screen and (min-width: 750px) {
+    .props-timeline-list {
+      width: 50%;
+      padding-left: 0;
+      min-height: 200px;
+    }
+  }
+
+  .props-timeline-line {
+    position: absolute;
+    background-color: var(--props-accent);
+    opacity: 0.15;
+    width: var(--props-line-width);
+    top: 8px;
+    bottom: 0;
+    z-index: 1;
+    left: var(--props-line-pos);
+  }
+
+  .props-timeline-progress {
+    position: absolute;
+    background-color: var(--props-accent);
+    width: var(--props-line-width);
+    top: 8px;
+    height: 0;
+    z-index: 2;
+    left: var(--props-line-pos);
+  }
+
+  .props-timeline-item {
+    display: flex;
+    width: 100%;
+    position: relative;
+    padding-bottom: 32px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .props-timeline-item.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .props-timeline-item:last-child {
+    padding-bottom: 0;
+  }
+
+  @media screen and (min-width: 750px) {
+    .props-timeline-item {
+      padding-bottom: 64px;
+    }
+  }
+
+  .props-timeline-marker {
+    flex: 0 0 0;
+    position: relative;
+  }
+
+  .props-timeline-dot {
+    position: absolute;
+    width: var(--props-dot-size);
+    height: var(--props-dot-size);
+    background-color: var(--props-accent);
+    border-radius: 50%;
+    z-index: 3;
+    outline: 4px solid {{ section.settings.bg_color | default: '#FFFFFF' }};
+    top: 7px;
+    left: var(--props-dot-offset);
+    transform: scale(0);
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .props-timeline-item.is-visible .props-timeline-dot {
+    transform: scale(1);
+  }
+
+  @keyframes props-timeline-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 var(--props-accent); }
+    50% { box-shadow: 0 0 0 6px transparent; }
+  }
+
+  .props-timeline-item.is-visible .props-timeline-dot {
+    animation: props-timeline-pulse 2s ease-in-out 0.4s 1;
+  }
+
+  .props-timeline-content {
+    flex: 1;
+    padding-left: var(--props-gutter);
+  }
+
+  .props-timeline-card {
+    text-align: left;
+  }
+
+  .props-timeline-date {
+    display: inline-block;
+    font-size: 0.8em;
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    opacity: 0.6;
+  }
+
+  .props-timeline-event-title {
+    margin: 0 0 12px 0;
+    font-size: var(--props-subheading-size);
+    line-height: 1.3;
+  }
+
+  .props-timeline-event-desc {
+    margin: 0 0 16px 0;
+    font-size: var(--props-body-size);
+    line-height: 1.6;
+    opacity: 0.85;
+  }
+
+  .props-timeline-link {
+    display: inline-block;
+    font-size: 0.9em;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
+    color: inherit;
+    font-weight: 500;
+    transition: text-decoration-thickness 0.2s ease;
+  }
+
+  @media (hover: hover) {
+    .props-timeline-link:hover {
+      text-decoration-thickness: 2px;
+    }
+  }
+
+  .props-timeline-image-wrap {
+    margin-top: 16px;
+    overflow: hidden;
+    border-radius: 4px;
+  }
+
+  .props-timeline-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    backface-visibility: hidden;
+  }
+
+  @media (hover: hover) {
+    .props-timeline-image-wrap:hover .props-timeline-image {
+      transform: scale(1.03);
+    }
+  }
+
+  .props-timeline-image-wrap.img-size-small { max-width: 200px; }
+  .props-timeline-image-wrap.img-size-medium { max-width: 400px; }
+  .props-timeline-image-wrap.img-size-full { max-width: 100%; }
+{% endstyle %}
+
+{% if section.blocks.size > 0 or section.settings.heading != blank %}
+<div class="props-timeline-{{ section.id }}" data-section-type="props-timeline" data-section-id="{{ section.id }}">
+  <div class="page-width props-timeline-container">
+    <div class="props-timeline-wrapper">
+
+      <div class="props-timeline-intro">
+        {% if section.settings.tagline != blank %}
+          <div class="props-timeline-tagline">{{ section.settings.tagline }}</div>
+        {% endif %}
+
+        {% if section.settings.heading != blank %}
+          <h2 class="props-timeline-heading">{{ section.settings.heading | escape }}</h2>
+        {% endif %}
+
+        {% if section.settings.description != blank %}
+          <div class="props-timeline-desc">{{ section.settings.description }}</div>
+        {% endif %}
+      </div>
+
+      <div class="props-timeline-list">
+        <div class="props-timeline-line" aria-hidden="true"></div>
+        <div class="props-timeline-progress" aria-hidden="true"></div>
+
+        {% for block in section.blocks %}
+          <div class="props-timeline-item" {{ block.shopify_attributes }}>
+            <div class="props-timeline-marker" aria-hidden="true">
+              <div class="props-timeline-dot"></div>
+            </div>
+
+            <div class="props-timeline-content">
+              <div class="props-timeline-card">
+                {% if block.settings.date_label != blank %}
+                  <span class="props-timeline-date">{{ block.settings.date_label | escape }}</span>
+                {% endif %}
+
+                {% if block.settings.heading != blank %}
+                  <h3 class="props-timeline-event-title">{{ block.settings.heading | escape }}</h3>
+                {% endif %}
+
+                {% if block.settings.description != blank %}
+                  <div class="props-timeline-event-desc">{{ block.settings.description }}</div>
+                {% endif %}
+
+                {% if block.settings.link_label != blank and block.settings.link_url != blank %}
+                  <a href="{{ block.settings.link_url }}" class="props-timeline-link">{{ block.settings.link_label | escape }}</a>
+                {% endif %}
+
+                {% if block.settings.image != blank %}
+                  <div class="props-timeline-image-wrap img-size-{{ block.settings.image_size }}">
+                    {{ block.settings.image | image_url: width: 800 | image_tag:
+                      loading: 'lazy',
+                      class: 'props-timeline-image',
+                      alt: block.settings.alt_text | default: block.settings.image.alt,
+                      widths: '200, 400, 600, 800',
+                      sizes: '(min-width: 750px) 400px, 100vw'
+                    }}
+                  </div>
+                {% elsif forloop.first %}
+                  <div class="props-timeline-image-wrap img-size-{{ block.settings.image_size }}">
+                    <img src="https://static.photos/monochrome/800x450.webp" class="props-timeline-image" loading="lazy" width="800" height="450" alt="Placeholder">
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+    </div>
+  </div>
+</div>
+{% endif %}
+
+{% javascript %}
+(function () {
+  var init = function (container) {
+    var id = container.getAttribute('data-section-id');
+    if (!id) return;
+
+    var introEls = container.querySelectorAll(
+      '.props-timeline-tagline, .props-timeline-heading, .props-timeline-desc'
+    );
+    var items = container.querySelectorAll('.props-timeline-item');
+    var progress = container.querySelector('.props-timeline-progress');
+    var list = container.querySelector('.props-timeline-list');
+
+    var introObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            introObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    introEls.forEach(function (el) { introObserver.observe(el); });
+
+    var itemObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            var idx = Array.prototype.indexOf.call(items, entry.target);
+            var delay = Math.min(idx * 80, 400);
+            entry.target.style.transitionDelay = delay + 'ms';
+            entry.target.classList.add('is-visible');
+            itemObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
+    );
+
+    items.forEach(function (el) { itemObserver.observe(el); });
+
+    if (progress && list) {
+      var ticking = false;
+      var updateProgress = function () {
+        var listRect = list.getBoundingClientRect();
+        var triggerY = window.innerHeight * 0.6;
+        var listHeight = list.offsetHeight;
+        var pct = Math.max(0, Math.min(1, (triggerY - listRect.top) / listHeight));
+        progress.style.height = (pct * listHeight) + 'px';
+        ticking = false;
+      };
+
+      window.addEventListener('scroll', function () {
+        if (!ticking) {
+          requestAnimationFrame(updateProgress);
+          ticking = true;
+        }
+      });
+
+      updateProgress();
+    }
+  };
+
+  document.querySelectorAll('[data-section-type="props-timeline"]').forEach(init);
+
+  document.addEventListener('shopify:section:load', function (e) {
+    var c = e.target.querySelector('[data-section-type="props-timeline"]');
+    if (c) init(c);
+  });
+})();
+{% endjavascript %}
