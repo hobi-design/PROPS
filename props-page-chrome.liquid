@@ -1,12 +1,14 @@
-{% comment %}
-  PROPS Page Chrome — Internal Utility Section
-  Injects page-level CSS for prominent section dividers with
-  labeled separators. Place once per template (near the top).
+{%- comment -%}
+  Page Chrome | PROPS — https://props.hobi.design/
+
+  Internal Utility Section — Injects page-level CSS for
+  prominent section dividers with labeled separators.
+  Place once per template (near the top).
 
   This section renders NO visible HTML of its own — it only
   outputs a <style> block that targets all subsequent
   .shopify-section elements on the page.
-{% endcomment %}
+{%- endcomment -%}
 
 {%- liquid
   assign divider_thickness = section.settings.divider_thickness | default: 2
